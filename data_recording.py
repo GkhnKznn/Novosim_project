@@ -15,7 +15,7 @@ import glob
 import sys
 
 # Connect to MQTT Broker
-mqttClient = mqtt.pubsub(brokerIP = "192.168.0.9")
+mqttClient = mqtt.pubsub(brokerIP = "192.168.1.34")
 mqttClient.subclient.loop_start()
 
 # initial sleep is needed to get system status messages
@@ -35,9 +35,10 @@ for dosya in dosya_listesi:
     except Exception as e:
         print(f"{dosya} silinirken bir hata oluştu: {e}")
 
-mqttClient.run()
 
 r = input("\nPress enter once pre-test is done")
+mqttClient.run()
+
 # any other key followed by enter will exit, or ctrl-c will exit
 if r != '':
     exit()
